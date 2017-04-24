@@ -4,12 +4,12 @@ import threading
 def help():
     print("Available Commands: ")
     print("----------------------------------")
-    print("myc help      -view commands")
-    print("myc ls        -see file containers")
-    print("myc start     -restart stopped file container")
-    print("myc stop      -stop a file container")
-    print("myc attach    -attach to file container")
-    print("myc run       -run new file container")
+    print("help      -view commands")
+    print("ls        -see file containers")
+    print("start     -restart stopped file container")
+    print("stop      -stop a file container")
+    print("attach    -attach to file container")
+    print("run       -run new file container")
     return
 
 def ls():
@@ -41,14 +41,8 @@ sy("echo These are your arguments")
 y = len(sys.argv)
 for x in range(y - 1):
     print str(sys.argv[x+1])
-t = threading.Thread(target=addInp)
-t.daemon
-t.start()
-print("Available Commands: ")
-print("----------------------------------")
-print("myc help      -view commands")
-print("myc ls        -see file containers")
-print("myc start     -restart stopped file container")
-print("myc stop      -stop a file container")
-print("myc attach    -attach to file container")
-print("myc run       -run new file container")
+t1 = threading.Thread(target=addInp)
+t1.daemon
+t1.start()
+
+
