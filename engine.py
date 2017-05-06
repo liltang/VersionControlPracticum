@@ -67,8 +67,9 @@ def foreG():
                                 if command != 'hp':
                                     raise InputError()
             else:
-                options[command]()
-                print('MARKER')
+                print('Marker1')
+                (options[command])()
+                print('MARKER2')
         except InputError:
             print("\nError in your input try again")
     return
