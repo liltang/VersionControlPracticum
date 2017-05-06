@@ -10,13 +10,14 @@ class InputError(Error):
 
 def hlp():
     print("Available Commands: ")
-    print("----------------------------------")
+    print("-------------------------------------------")
     print("hp        -view commands")
     print("ls        -see file containers")
     print("st        -restart stopped file container")
     print("sp        -stop a file container")
     print("at        -attach to file container")
     print("rn        -run new file container")
+    print("-------------------------------------------")
     return
 
 def ls():
@@ -68,6 +69,7 @@ def foreG():
                                     raise InputError()
             else:
                 print('Marker1')
+                #options['hp']()
                 (options[command])()
                 print('MARKER2')
         except InputError:
