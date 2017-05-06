@@ -48,30 +48,31 @@ def backG():
     return
 
 def foreG():
+    flag = 0
     hlp()
-    options = {'hp' : hlp,
-               'ls' : ls,
-               'st' : strt,
-               'sp' : stp,
-               'at' : atch,
-               'rn' : run
-    }
-
     while True:
         try:
             command = raw_input("\nEnter a command: ")
-            if command != 'ls':
-                if command != 'st':
-                    if command != 'sp':
-                        if command != 'at':
-                            if command != 'rn':
-                                if command != 'hp':
-                                    raise InputError()
-            else:
-                print('Marker1')
-                #options['hp']()
-                (options[command])()
-                print('MARKER2')
+            if command == 'ls':
+                ls()
+                flag = flag + 1
+            if command == 'st':
+                strt()
+                flag = flag + 1
+            if command == 'sp':
+                stp()
+                flag = flag + 1
+            if command == 'at':
+                atch()
+                flag = flag + 1
+            if command == 'rn':
+                run()
+                flag = flag + 1
+            if command == 'hp':
+                hlp()
+                flag = flag + 1
+            elif flag == 0:
+                raise InputError()
         except InputError:
             print("\nError in your input try again")
     return
