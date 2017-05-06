@@ -73,6 +73,7 @@ def foreG():
                 flag = flag + 1
             elif flag == 0:
                 raise InputError()
+            flag = 0
         except InputError:
             print("\nError in your input try again")
     return
