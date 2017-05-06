@@ -1,30 +1,37 @@
 from os import system as sy
 import sys
 import threading
-def help():
+
+class Error(Exception):
+    pass
+
+class InputError(Error):
+    pass
+
+def hlp():
     print("Available Commands: ")
     print("----------------------------------")
-    print("help      -view commands")
+    print("hp        -view commands")
     print("ls        -see file containers")
-    print("start     -restart stopped file container")
-    print("stop      -stop a file container")
-    print("attach    -attach to file container")
-    print("run       -run new file container")
+    print("st        -restart stopped file container")
+    print("sp        -stop a file container")
+    print("at        -attach to file container")
+    print("rn        -run new file container")
     return
 
 def ls():
-    sy("docker ps -a")
+    sy("sudo docker ps -a")
     return
 
-def start():
+def strt():
     print("Enter name of file you wish to see")
     return
 
-def stop():
+def stp():
     print("Enter name of file you don't need")
     return
 
-def attach():
+def atch():
     print("Enter name of file you wish to access")
     return
 
@@ -32,17 +39,51 @@ def run():
     print("Enter a file you wish to containerize")
     return
 
-def addInp():
+def backG():
     while True:
         #print("RUNNING")
+        #KEEPING TRACK OF CONTAINERS HERE
+        continue
+    return
+
+def foreG():
+    hlp()
+    options = {'hp' : hlp,
+               'ls' : ls,
+               'st' : strt,
+               'sp' : stp,
+               'at' : atch,
+               'rn' : run
+    }
+
+    while True:
+        try:
+            command = raw_input("\nEnter a command: ")
+            if command != 'ls':
+                if command != 'st':
+                    if command != 'sp':
+                        if command != 'at':
+                            if command != 'rn':
+                                if command != 'hp':
+                                    raise InputError()
+            else:
+                options[command]()
+                print('MARKER')
+        except InputError:
+            print("\nError in your input try again")
     return
 
 sy("echo These are your arguments")
 y = len(sys.argv)
 for x in range(y - 1):
     print str(sys.argv[x+1])
-t1 = threading.Thread(target=addInp)
+#CREATING DICTIONARY
+
+
+#Start threads
+t1 = threading.Thread(target=backG)
 t1.daemon
 t1.start()
-
+t2 = threading.Thread(target=foreG)
+t2.start()
 
